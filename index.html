@@ -15,11 +15,13 @@
     --accent: #4a6cf7;
     --accent-dim: #2a3a8a;
     --accent-glow: rgba(74, 108, 247, 0.15);
+    --green: #22c55e;
+    --green-dim: #15532c;
+    --green-glow: rgba(34, 197, 94, 0.12);
     --text: #e8e8f0;
     --text-dim: #7a7a8a;
     --text-mid: #b0b0c0;
     --white: #ffffff;
-    --green: #22c55e;
   }
 
   html { scroll-behavior: smooth; }
@@ -33,7 +35,6 @@
     overflow-x: hidden;
   }
 
-  /* NOISE TEXTURE */
   body::before {
     content: '';
     position: fixed;
@@ -47,18 +48,15 @@
   /* NAV */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     padding: 20px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid transparent;
-    transition: all 0.3s;
-    background: rgba(10, 10, 15, 0.8);
+    background: rgba(10, 10, 15, 0.85);
     backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
 
   .nav-logo {
@@ -80,7 +78,6 @@
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s;
-    letter-spacing: 0.2px;
   }
 
   .nav-cta:hover { background: #3a5ce5; transform: translateY(-1px); }
@@ -99,9 +96,10 @@
 
   .hero-glow {
     position: absolute;
-    width: 700px;
+    width: 900px;
     height: 700px;
-    background: radial-gradient(circle, rgba(74,108,247,0.12) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 40% 50%, rgba(74,108,247,0.1) 0%, transparent 55%),
+                radial-gradient(ellipse at 62% 50%, rgba(34,197,94,0.07) 0%, transparent 55%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -111,8 +109,8 @@
   .hero-grid {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(rgba(74,108,247,0.04) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(74,108,247,0.04) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(74,108,247,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(74,108,247,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
   }
@@ -123,9 +121,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent-glow);
-    border: 1px solid var(--accent-dim);
-    color: var(--accent);
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid var(--green-dim);
+    color: var(--green);
     padding: 6px 16px;
     border-radius: 100px;
     font-size: 13px;
@@ -162,11 +160,12 @@
   h1 .accent { color: var(--accent); }
 
   .hero-sub {
-    font-size: clamp(16px, 2vw, 19px);
+    font-size: clamp(16px, 2vw, 18px);
     color: var(--text-mid);
-    max-width: 560px;
+    max-width: 540px;
     margin: 0 auto 40px;
     font-weight: 300;
+    line-height: 1.75;
     animation: fadeUp 0.6s 0.2s ease both;
   }
 
@@ -187,7 +186,6 @@
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s;
-    letter-spacing: 0.2px;
   }
 
   .btn-primary:hover { background: #3a5ce5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,108,247,0.3); }
@@ -229,11 +227,98 @@
     display: block;
   }
 
+  .proof-number.green { color: var(--green); }
+
   .proof-label {
     font-size: 13px;
     color: var(--text-dim);
     font-weight: 400;
     letter-spacing: 0.3px;
+  }
+
+  /* ORIGIN */
+  .origin-wrap {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .origin-section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .origin-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .origin-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 28px;
+  }
+
+  .origin-quote em {
+    color: var(--green);
+    font-style: normal;
+  }
+
+  .origin-body {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .origin-body p + p { margin-top: 16px; }
+
+  .origin-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .origin-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .origin-card:hover {
+    border-color: var(--green);
+    background: rgba(34,197,94,0.04);
+  }
+
+  .origin-card-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+
+  .origin-card-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 300;
   }
 
   /* SECTION */
@@ -264,6 +349,7 @@
     max-width: 520px;
     font-weight: 300;
     margin-bottom: 64px;
+    line-height: 1.7;
   }
 
   /* SERVICES */
@@ -286,9 +372,7 @@
   .service-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 2px;
     background: var(--accent);
     transform: scaleX(0);
@@ -324,7 +408,7 @@
   .service-desc {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 24px;
     font-weight: 300;
   }
@@ -392,31 +476,46 @@
     border-radius: 16px;
     padding: 36px;
     transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
   }
 
-  .result-card:hover { border-color: var(--accent-dim); }
+  .result-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .result-card:hover { border-color: var(--green-dim); }
+  .result-card:hover::after { transform: scaleX(1); }
 
   .result-stat {
     font-family: 'Syne', sans-serif;
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 800;
     letter-spacing: -2px;
-    color: var(--accent);
+    color: var(--green);
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .result-label {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     color: var(--white);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
   }
 
   .result-desc {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.7;
+    line-height: 1.85;
     font-weight: 300;
   }
 
@@ -468,7 +567,7 @@
   .bundle-desc {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 24px;
     font-weight: 300;
   }
@@ -555,7 +654,7 @@
   .step-content p {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.7;
+    line-height: 1.75;
     font-weight: 300;
   }
 
@@ -569,9 +668,10 @@
 
   .cta-glow {
     position: absolute;
-    width: 600px;
+    width: 700px;
     height: 400px;
-    background: radial-gradient(ellipse, rgba(74,108,247,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 40%, rgba(74,108,247,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 62%, rgba(34,197,94,0.06) 0%, transparent 60%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -579,7 +679,6 @@
   }
 
   .cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
-
   .cta-content h2 { margin-bottom: 16px; }
 
   .cta-content p {
@@ -587,6 +686,7 @@
     color: var(--text-mid);
     margin-bottom: 40px;
     font-weight: 300;
+    line-height: 1.75;
   }
 
   /* FOOTER */
@@ -596,7 +696,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: gap;
+    flex-wrap: wrap;
+    gap: 12px;
     background: var(--surface);
   }
 
@@ -609,10 +710,7 @@
 
   .footer-logo span { color: var(--accent); }
 
-  footer p {
-    font-size: 13px;
-    color: var(--text-dim);
-  }
+  footer p { font-size: 13px; color: var(--text-dim); }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
@@ -631,10 +729,11 @@
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     section { padding: 64px 24px; }
+    .origin-section { padding: 64px 24px; grid-template-columns: 1fr; gap: 48px; }
     .proof-bar { padding: 32px 24px; gap: 40px; }
     .results-section { padding: 64px 24px; }
     .cta-section { padding: 64px 24px; }
-    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    footer { padding: 24px; flex-direction: column; text-align: center; }
     h1 { letter-spacing: -1px; }
   }
 </style>
@@ -643,7 +742,7 @@
 
 <nav>
   <div class="nav-logo">VERTO<span>.</span>STUDIO</div>
-  <a href="mailto:giobenitez589@icloud.com" class="nav-cta">Get in Touch</a>
+  <a href="mailto:giobenitez589@icloud.com" class="nav-cta">Let's Talk</a>
 </nav>
 
 <!-- HERO -->
@@ -653,12 +752,12 @@
   <div class="hero-content">
     <div class="hero-badge">
       <span class="badge-dot"></span>
-      Available for new projects
+      Gio Benitez &nbsp;·&nbsp; 25 &nbsp;·&nbsp; Self-taught &nbsp;·&nbsp; Pomona, CA
     </div>
-    <h1>Systems that<br><span class="accent">actually work.</span></h1>
-    <p class="hero-sub">I build AI automations, trend detection pipelines, and production-ready web systems for creators, coaches, and small businesses.</p>
+    <h1>Built by someone<br>who <span class="accent">actually</span> cares.</h1>
+    <p class="hero-sub">I'm Gio. I started building AI systems a year ago while developing VIONYX — a platform for high performers. That work taught me what real results look like. Now I bring the same standard to your business.</p>
     <div class="hero-actions">
-      <a href="mailto:giobenitez589@icloud.com" class="btn-primary">Start a Project</a>
+      <a href="mailto:giobenitez589@icloud.com" class="btn-primary">Start a Conversation</a>
       <a href="#services" class="btn-secondary">See What I Build</a>
     </div>
   </div>
@@ -667,40 +766,69 @@
 <!-- PROOF BAR -->
 <div class="proof-bar">
   <div class="proof-item">
-    <span class="proof-number">19→50%</span>
-    <span class="proof-label">3PT shooting improvement</span>
+    <span class="proof-number">10 days</span>
+    <span class="proof-label">First working product shipped</span>
   </div>
   <div class="proof-item">
-    <span class="proof-number">$20K</span>
+    <span class="proof-number green">$20K</span>
     <span class="proof-label">First month for a sales rep</span>
   </div>
   <div class="proof-item">
-    <span class="proof-number">4</span>
-    <span class="proof-label">Production systems shipped</span>
+    <span class="proof-number green">19→50%</span>
+    <span class="proof-label">3PT shooting in one season</span>
   </div>
   <div class="proof-item">
-    <span class="proof-number">Live</span>
-    <span class="proof-label">Real users, real results</span>
+    <span class="proof-number">2024</span>
+    <span class="proof-label">Started building</span>
+  </div>
+</div>
+
+<!-- ORIGIN -->
+<div class="origin-wrap">
+  <div class="origin-section">
+    <div class="origin-left">
+      <div class="origin-tag fade-up">The Origin</div>
+      <div class="origin-quote fade-up">I didn't start by learning to code. I started by trying to <em>solve something real.</em></div>
+      <div class="origin-body fade-up">
+        <p>In 2024 I began building VIONYX — a platform to help high performers understand themselves: what blocks them, what drives performance, what creates clarity under pressure.</p>
+        <p>Building it is what taught me to build. The technical skills came from the obsession to ship something that actually worked.</p>
+        <p>I'm not an agency. I'm one person who listens, builds carefully, and wants your system to actually work. That's what the people I've worked with needed — and it's what I'll bring to your project.</p>
+      </div>
+    </div>
+    <div class="origin-right">
+      <div class="origin-card fade-up">
+        <div class="origin-card-label">What VIONYX taught me</div>
+        <div class="origin-card-text">Real outcomes require real feedback loops. The systems I build for clients are held to the same standard — if it doesn't produce measurable results, it isn't done.</div>
+      </div>
+      <div class="origin-card fade-up">
+        <div class="origin-card-label">How I work</div>
+        <div class="origin-card-text">I listen before I build. I ask what you're actually trying to solve, not just what you want built. Then I communicate clearly throughout and flag anything that needs a real decision.</div>
+      </div>
+      <div class="origin-card fade-up">
+        <div class="origin-card-label">Why trust me</div>
+        <div class="origin-card-text">I'm not here to take your money and disappear. I want to be the person you call when something needs to be built right. That starts with earning it on the first project.</div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section id="services">
   <div class="section-tag fade-up">What I Build</div>
-  <h2 class="fade-up">Four services.<br>Real results.</h2>
-  <p class="section-sub fade-up">Every system I build is production-ready and backed by documented results from real users.</p>
+  <h2 class="fade-up">Four things.<br>Done right.</h2>
+  <p class="section-sub fade-up">I don't take on work I can't do well. These are the four areas where I've built real systems with real outcomes.</p>
 
   <div class="services-grid">
     <div class="service-card fade-up">
       <div class="service-icon">📡</div>
       <div class="service-name">Trend Detection Systems</div>
-      <div class="service-desc">Automated pipelines that scrape social platforms, score content for early traction using engagement signals, and deliver SMS alerts before trends go mainstream.</div>
+      <div class="service-desc">Automated pipelines that monitor social platforms, score content by engagement signals, and text you before a trend goes mainstream. Built for creators who want to move first.</div>
       <div class="service-price">$3,000 – $5,500</div>
-      <div class="service-price-note">Setup fee · Monthly hosting from $99/mo</div>
+      <div class="service-price-note">Setup fee · Hosting from $99/mo</div>
       <ul class="service-features">
         <li>Instagram hashtag monitoring</li>
         <li>Engagement signal scoring</li>
-        <li>Real-time SMS alerts via Twilio</li>
+        <li>Real-time SMS via Twilio</li>
         <li>Custom filters per niche</li>
       </ul>
     </div>
@@ -708,7 +836,7 @@
     <div class="service-card fade-up">
       <div class="service-icon">⚙️</div>
       <div class="service-name">Automation Pipelines</div>
-      <div class="service-desc">Connect your tools, forms, databases, and APIs so data moves automatically. No more manual entry, no more dropped leads, no more copy-pasting between platforms.</div>
+      <div class="service-desc">Your tools talking to each other so you don't have to. Forms, databases, APIs, CRMs — connected and moving without manual work in between.</div>
       <div class="service-price">$2,000 – $5,000</div>
       <div class="service-price-note">One-time build · Support retainers available</div>
       <ul class="service-features">
@@ -722,7 +850,7 @@
     <div class="service-card fade-up">
       <div class="service-icon">🌐</div>
       <div class="service-name">Websites & Landing Pages</div>
-      <div class="service-desc">Production-ready sites deployed on Vercel with GitHub version control. From simple landing pages to full web apps with auth, dashboards, and backend connections.</div>
+      <div class="service-desc">Clean, fast, deployed on Vercel with GitHub version control. From a single landing page to a full web app with auth, dashboards, and backend connections.</div>
       <div class="service-price">$1,600 – $5,000</div>
       <div class="service-price-note">Based on scope · Maintenance retainers available</div>
       <ul class="service-features">
@@ -736,7 +864,7 @@
     <div class="service-card fade-up">
       <div class="service-icon">🤖</div>
       <div class="service-name">AI Integrations</div>
-      <div class="service-desc">Connect Claude, GPT, or voice AI directly into your workflow. Custom prompts, secure API proxies, conversation memory, and automated content generation.</div>
+      <div class="service-desc">Connect Claude or GPT directly into your workflow. Custom prompts, secure API proxies, voice agents, conversation memory — built for real use, not demos.</div>
       <div class="service-price">$2,500 – $6,500</div>
       <div class="service-price-note">Based on complexity</div>
       <ul class="service-features">
@@ -752,25 +880,25 @@
 <!-- RESULTS -->
 <div class="results-section">
   <div class="results-inner">
-    <div class="section-tag fade-up">Proof of Work</div>
-    <h2 class="fade-up">Built for real people.<br>Measured results.</h2>
-    <p class="section-sub fade-up">Not demos. Not prototypes. Systems running in production with documented outcomes.</p>
+    <div class="section-tag fade-up">Real Outcomes</div>
+    <h2 class="fade-up">The work speaks<br>for itself.</h2>
+    <p class="section-sub fade-up">Not case studies. Actual people, actual results — from the VIONYX framework that started all of this.</p>
 
     <div class="results-grid">
       <div class="result-card fade-up">
-        <div class="result-stat">50%</div>
-        <div class="result-label">3-Point Shooting — Pro Basketball Player</div>
-        <div class="result-desc">Started at 19 percent. Used a behavioral pattern recognition system to identify what was driving misses. Raised his shooting to 50 percent and became the league leader in 3-point percentage by end of season.</div>
-      </div>
-      <div class="result-card fade-up">
         <div class="result-stat">$20K</div>
         <div class="result-label">First $20K Month — Solar Sales Rep</div>
-        <div class="result-desc">Built a post-action reflection and behavioral adjustment system for a D2D sales rep. Helped them identify patterns in what was working and implement real-time adjustments. First $20K month followed.</div>
+        <div class="result-desc">He was already one of the top reps in his company — but he'd hit a wall he couldn't push through. For one month he used the VIONYX framework to reflect on every door knock and every close. By the end of that month: his first $20K. Not from a new script. From understanding his own patterns.</div>
       </div>
       <div class="result-card fade-up">
-        <div class="result-stat">Live</div>
-        <div class="result-label">Trend Detection — Active Content Creator</div>
-        <div class="result-desc">Built and shipped a full Instagram trend detection pipeline in one session. Real data, real SMS alerts, validated by an active creator who now receives live trend signals to his phone.</div>
+        <div class="result-stat">50%</div>
+        <div class="result-label">19% → 50% — Pro Basketball, Thailand</div>
+        <div class="result-desc">First season playing pro overseas. He'd played college ball in Canada but had never gone deep on the mental side. Used the VIONYX framework to track his state before games, at practice, and after losses — and built real self-regulation skills. By end of season: league leader in 3-point percentage. Not from a shooting coach. From knowing where his head was.</div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-stat">10 days</div>
+        <div class="result-label">First Working Product — VIONYX</div>
+        <div class="result-desc">The first version of VIONYX was built in ten days. Self-taught, no bootcamp, no team. Built while learning. What came out of it wasn't just a product — it was proof that the process works. Every build since has been held to that same standard.</div>
       </div>
     </div>
   </div>
@@ -780,13 +908,13 @@
 <section id="bundles">
   <div class="section-tag fade-up">Packages</div>
   <h2 class="fade-up">Bundle and save.</h2>
-  <p class="section-sub fade-up">Pre-built combinations for common use cases.</p>
+  <p class="section-sub fade-up">Common combinations for common use cases. If yours is different, we scope it from scratch.</p>
 
   <div class="bundles-grid">
     <div class="bundle-card fade-up">
       <div class="bundle-tag">Creator</div>
       <div class="bundle-name">Creator Stack</div>
-      <div class="bundle-desc">Everything a content creator needs to find what is trending, automate their posting, and have a clean home on the web.</div>
+      <div class="bundle-desc">Everything a content creator needs to find what's trending, automate their posting workflow, and have a clean home on the web.</div>
       <ul class="bundle-includes">
         <li>Trend Detection System</li>
         <li>X Post Automation Backend</li>
@@ -810,7 +938,7 @@
     <div class="bundle-card fade-up">
       <div class="bundle-tag">Custom</div>
       <div class="bundle-name">Full Custom Build</div>
-      <div class="bundle-desc">A complete behavioral or operational platform built to your specifications. Think VIONYX but for your specific domain and users.</div>
+      <div class="bundle-desc">A complete platform built to your specifications. Think VIONYX but for your specific domain and users.</div>
       <ul class="bundle-includes">
         <li>Full stack application</li>
         <li>Auth, payments, and database</li>
@@ -825,36 +953,36 @@
 <!-- HOW IT WORKS -->
 <section id="process">
   <div class="section-tag fade-up">Process</div>
-  <h2 class="fade-up">How it works.</h2>
-  <p class="section-sub fade-up">Simple, fast, and no surprises.</p>
+  <h2 class="fade-up">No surprises.</h2>
+  <p class="section-sub fade-up">Simple, clear, and you're in the loop the whole time.</p>
 
   <div class="steps">
     <div class="step fade-up">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>We talk through the problem</h3>
-        <p>You tell me what you are trying to solve. I ask the right questions to understand the scope and confirm it is something I can build well.</p>
+        <h3>We talk through what you're trying to solve</h3>
+        <p>Not just what you want built — what you're actually trying to solve. I ask the right questions to understand the real problem and make sure it's something I can build well.</p>
       </div>
     </div>
     <div class="step fade-up">
       <div class="step-num">2</div>
       <div class="step-content">
-        <h3>I send a proposal and contract</h3>
-        <p>Clear scope, fixed price, milestone payment schedule. No surprises. You review and sign before anything starts.</p>
+        <h3>Proposal, scope, and contract</h3>
+        <p>Clear scope, fixed price, milestone payment schedule. You review and sign before anything starts. No scope creep, no hidden fees.</p>
       </div>
     </div>
     <div class="step fade-up">
       <div class="step-num">3</div>
       <div class="step-content">
-        <h3>I build and you stay in the loop</h3>
-        <p>You see progress throughout, not just at the end. I communicate clearly and flag anything that needs a decision.</p>
+        <h3>You see progress throughout</h3>
+        <p>Not just at the end. I communicate clearly, flag decisions as they come up, and adjust based on your feedback. Your input shapes the outcome.</p>
       </div>
     </div>
     <div class="step fade-up">
       <div class="step-num">4</div>
       <div class="step-content">
-        <h3>Delivery, walkthrough, and support</h3>
-        <p>I hand off a working system, walk you through it, and stay available for 30 days of questions. Maintenance retainers available after that.</p>
+        <h3>Delivery, walkthrough, 30-day support</h3>
+        <p>I hand off a working system, walk you through everything, and stay available for 30 days. If something isn't right, we fix it. Maintenance retainers available after that.</p>
       </div>
     </div>
   </div>
@@ -865,16 +993,16 @@
   <div class="cta-glow"></div>
   <div class="cta-content">
     <div class="section-tag fade-up">Let's Build</div>
-    <h2 class="fade-up">Ready to start?</h2>
-    <p class="fade-up">Tell me what you are trying to build or automate. I will respond within 24 hours.</p>
-    <a href="mailto:giobenitez589@icloud.com" class="btn-primary fade-up">Send a Message</a>
+    <h2 class="fade-up">Tell me what you're building.</h2>
+    <p class="fade-up">I'll respond within 24 hours. No pitch, no pressure — just a real conversation about whether I can help and what it would actually take.</p>
+    <a href="mailto:giobenitez589@icloud.com" class="btn-primary fade-up">Start the Conversation</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">VERTO<span>.</span>STUDIO</div>
-  <p>Pomona, CA · Building AI systems that work.</p>
+  <p>Pomona, CA · Self-taught · Building since 2024</p>
   <p>giobenitez589@icloud.com</p>
 </footer>
 
