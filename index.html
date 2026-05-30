@@ -413,16 +413,22 @@
     font-weight: 300;
   }
 
-  .service-price {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
+  .service-quote {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent-dim);
     color: var(--accent);
-    letter-spacing: -0.5px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 100px;
     margin-bottom: 4px;
   }
 
-  .service-price-note {
+  .service-quote-note {
     font-size: 12px;
     color: var(--text-dim);
     letter-spacing: 0.3px;
@@ -590,15 +596,19 @@
 
   .bundle-includes li::before { content: '✓'; color: var(--green); font-size: 12px; }
 
-  .bundle-price {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -1px;
+  .bundle-quote {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 100px;
   }
-
-  .bundle-price span { font-size: 16px; color: var(--text-dim); font-weight: 400; font-family: 'DM Sans', sans-serif; }
 
   /* HOW IT WORKS */
   .steps {
@@ -823,8 +833,8 @@
       <div class="service-icon">📡</div>
       <div class="service-name">Trend Detection Systems</div>
       <div class="service-desc">Automated pipelines that monitor social platforms, score content by engagement signals, and text you before a trend goes mainstream. Built for creators who want to move first.</div>
-      <div class="service-price">$3,000 – $5,500</div>
-      <div class="service-price-note">Setup fee · Hosting from $99/mo</div>
+      <div class="service-quote">Custom quote after discovery call</div>
+      <div class="service-quote-note">Hosting from $99/mo once live</div>
       <ul class="service-features">
         <li>Instagram hashtag monitoring</li>
         <li>Engagement signal scoring</li>
@@ -837,8 +847,8 @@
       <div class="service-icon">⚙️</div>
       <div class="service-name">Automation Pipelines</div>
       <div class="service-desc">Your tools talking to each other so you don't have to. Forms, databases, APIs, CRMs — connected and moving without manual work in between.</div>
-      <div class="service-price">$2,000 – $5,000</div>
-      <div class="service-price-note">One-time build · Support retainers available</div>
+      <div class="service-quote">Custom quote after discovery call</div>
+      <div class="service-quote-note">Support retainers available</div>
       <ul class="service-features">
         <li>n8n, Zapier, Pipedream</li>
         <li>Webhook and API connections</li>
@@ -851,8 +861,8 @@
       <div class="service-icon">🌐</div>
       <div class="service-name">Websites & Landing Pages</div>
       <div class="service-desc">Clean, fast, deployed on Vercel with GitHub version control. From a single landing page to a full web app with auth, dashboards, and backend connections.</div>
-      <div class="service-price">$1,600 – $5,000</div>
-      <div class="service-price-note">Based on scope · Maintenance retainers available</div>
+      <div class="service-quote">Custom quote after discovery call</div>
+      <div class="service-quote-note">Maintenance retainers available</div>
       <ul class="service-features">
         <li>Deployed on Vercel</li>
         <li>GitHub version control</li>
@@ -865,8 +875,8 @@
       <div class="service-icon">🤖</div>
       <div class="service-name">AI Integrations</div>
       <div class="service-desc">Connect Claude or GPT directly into your workflow. Custom prompts, secure API proxies, voice agents, conversation memory — built for real use, not demos.</div>
-      <div class="service-price">$2,500 – $6,500</div>
-      <div class="service-price-note">Based on complexity</div>
+      <div class="service-quote">Custom quote after discovery call</div>
+      <div class="service-quote-note">Scope varies by complexity</div>
       <ul class="service-features">
         <li>Claude and GPT integrations</li>
         <li>Vapi voice agent setup</li>
@@ -908,7 +918,7 @@
 <section id="bundles">
   <div class="section-tag fade-up">Packages</div>
   <h2 class="fade-up">Bundle and save.</h2>
-  <p class="section-sub fade-up">Common combinations for common use cases. If yours is different, we scope it from scratch.</p>
+  <p class="section-sub fade-up">Common combinations for common use cases. Everything starts with a discovery call — I'll send a custom quote once I understand the scope.</p>
 
   <div class="bundles-grid">
     <div class="bundle-card fade-up">
@@ -920,7 +930,7 @@
         <li>X Post Automation Backend</li>
         <li>Landing Page</li>
       </ul>
-      <div class="bundle-price">$8,500 <span>– $13,000</span></div>
+      <div class="bundle-quote">Custom quote after discovery call</div>
     </div>
 
     <div class="bundle-card featured fade-up">
@@ -932,7 +942,7 @@
         <li>Automation Pipeline</li>
         <li>Dashboard and Control Panel</li>
       </ul>
-      <div class="bundle-price">$9,500 <span>– $16,000</span></div>
+      <div class="bundle-quote">Custom quote after discovery call</div>
     </div>
 
     <div class="bundle-card fade-up">
@@ -945,7 +955,7 @@
         <li>AI integration with custom persona</li>
         <li>Admin dashboard</li>
       </ul>
-      <div class="bundle-price">$15,000 <span>– $28,000</span></div>
+      <div class="bundle-quote">Custom quote after discovery call</div>
     </div>
   </div>
 </section>
