@@ -722,6 +722,212 @@
 
   footer p { font-size: 13px; color: var(--text-dim); }
 
+  /* CONFIGURATOR */
+  .configurator-section {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 48px;
+  }
+
+  .configurator-inner { max-width: 1200px; margin: 0 auto; }
+
+  .config-shell {
+    max-width: 720px;
+    margin-top: 0;
+  }
+
+  .config-progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 40px;
+  }
+
+  .config-progress-dot {
+    height: 3px;
+    flex: 1;
+    background: var(--border);
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+
+  .config-progress-dot.active { background: var(--accent); }
+  .config-progress-dot.done { background: var(--green); }
+
+  .config-step { display: none; }
+  .config-step.active { display: block; }
+
+  .config-step-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .config-question {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+
+  .config-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .config-option {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-align: left;
+    width: 100%;
+  }
+
+  .config-option:hover {
+    border-color: var(--accent-dim);
+    background: rgba(74,108,247,0.05);
+    transform: translateX(4px);
+  }
+
+  .config-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  .config-option-icon { font-size: 18px; flex-shrink: 0; width: 28px; }
+
+  .config-option-label {
+    font-size: 14px;
+    color: var(--text-mid);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* BLUEPRINT RESULT */
+  .config-result { display: none; }
+  .config-result.active { display: block; }
+
+  .result-blueprint {
+    background: var(--surface);
+    border: 1px solid var(--accent-dim);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .blueprint-header {
+    padding: 32px 36px 28px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(74,108,247,0.06) 0%, transparent 100%);
+  }
+
+  .blueprint-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .blueprint-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+  }
+
+  .blueprint-body {
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .blueprint-message {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .blueprint-stack-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .blueprint-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blueprint-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-mid);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .blueprint-item::before {
+    content: '✓';
+    color: var(--green);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .blueprint-actions {
+    padding: 24px 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-dim);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent-dim); color: var(--text); }
+
+  @media (max-width: 768px) {
+    .configurator-section { padding: 64px 24px; }
+    .blueprint-body { grid-template-columns: 1fr; gap: 24px; }
+    .blueprint-header, .blueprint-body, .blueprint-actions { padding-left: 24px; padding-right: 24px; }
+  }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -887,6 +1093,121 @@
   </div>
 </section>
 
+<!-- CONFIGURATOR -->
+<div class="configurator-section">
+  <div class="configurator-inner">
+    <div class="section-tag fade-up">Interactive</div>
+    <h2 class="fade-up">Build your blueprint.</h2>
+    <p class="section-sub fade-up">Three questions. I'll show you exactly what I'd build for your situation — and why.</p>
+
+    <div class="config-shell fade-up">
+      <!-- Progress -->
+      <div class="config-progress">
+        <div class="config-progress-dot active" id="dot-1"></div>
+        <div class="config-progress-dot" id="dot-2"></div>
+        <div class="config-progress-dot" id="dot-3"></div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="config-step active" id="step-1">
+        <div class="config-step-label">Step 1 of 3</div>
+        <div class="config-question">What describes you best?</div>
+        <div class="config-options">
+          <button class="config-option" data-step="1" data-value="creator">
+            <span class="config-option-icon">📱</span>
+            <span class="config-option-label">Content Creator</span>
+          </button>
+          <button class="config-option" data-step="1" data-value="coach">
+            <span class="config-option-icon">🧠</span>
+            <span class="config-option-label">Coach or Consultant</span>
+          </button>
+          <button class="config-option" data-step="1" data-value="sales">
+            <span class="config-option-icon">🤝</span>
+            <span class="config-option-label">Sales Professional</span>
+          </button>
+          <button class="config-option" data-step="1" data-value="business">
+            <span class="config-option-icon">🏢</span>
+            <span class="config-option-label">Small Business Owner</span>
+          </button>
+          <button class="config-option" data-step="1" data-value="startup">
+            <span class="config-option-icon">🚀</span>
+            <span class="config-option-label">Building a Startup</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="config-step" id="step-2">
+        <div class="config-step-label">Step 2 of 3</div>
+        <div class="config-question">What's your biggest bottleneck right now?</div>
+        <div class="config-options">
+          <button class="config-option" data-step="2" data-value="trends">
+            <span class="config-option-icon">📡</span>
+            <span class="config-option-label">I'm always late to trends — by the time I see something it's already everywhere</span>
+          </button>
+          <button class="config-option" data-step="2" data-value="manual">
+            <span class="config-option-icon">⚙️</span>
+            <span class="config-option-label">Too much manual work — copy-pasting, following up, data entry eating my time</span>
+          </button>
+          <button class="config-option" data-step="2" data-value="leads">
+            <span class="config-option-icon">💸</span>
+            <span class="config-option-label">Leads and clients are falling through the cracks — no real system</span>
+          </button>
+          <button class="config-option" data-step="2" data-value="platform">
+            <span class="config-option-icon">🌐</span>
+            <span class="config-option-label">I need to build something that doesn't exist yet</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="config-step" id="step-3">
+        <div class="config-step-label">Step 3 of 3</div>
+        <div class="config-question">What does your current setup look like?</div>
+        <div class="config-options">
+          <button class="config-option" data-step="3" data-value="nothing">
+            <span class="config-option-icon">✨</span>
+            <span class="config-option-label">Nothing yet — starting from scratch</span>
+          </button>
+          <button class="config-option" data-step="3" data-value="manual_only">
+            <span class="config-option-icon">📋</span>
+            <span class="config-option-label">I have a business but everything is done manually</span>
+          </button>
+          <button class="config-option" data-step="3" data-value="some_tools">
+            <span class="config-option-icon">🔧</span>
+            <span class="config-option-label">I have tools but they're disconnected — nothing talks to each other</span>
+          </button>
+          <button class="config-option" data-step="3" data-value="existing">
+            <span class="config-option-icon">📈</span>
+            <span class="config-option-label">Something is working — I want to upgrade or scale it</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="config-result" id="config-result">
+        <div class="result-blueprint">
+          <div class="blueprint-header">
+            <div class="blueprint-tag">Your Blueprint</div>
+            <div class="blueprint-title" id="blueprint-title"></div>
+          </div>
+          <div class="blueprint-body">
+            <div class="blueprint-message" id="blueprint-message"></div>
+            <div>
+              <div class="blueprint-stack-label">What I'd build for you</div>
+              <div class="blueprint-items" id="blueprint-items"></div>
+            </div>
+          </div>
+          <div class="blueprint-actions">
+            <a href="#" class="btn-primary" id="blueprint-cta">Book a Discovery Call</a>
+            <button class="btn-ghost" id="blueprint-reset">Start over</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- RESULTS -->
 <div class="results-section">
   <div class="results-inner">
@@ -1026,6 +1347,179 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // BLUEPRINT CONFIGURATOR
+  const sel = {};
+
+  const blueprints = {
+    'creator-trends': {
+      title: "The Creator's Early Mover Stack",
+      message: "You're creating content for an algorithm that rewards whoever moves first. Right now you're guessing. This stack tells you what's trending in your niche before the rest of your niche catches on — and automates the workflow so you can move fast when it matters.",
+      items: ["Instagram Trend Detection Pipeline", "Real-time SMS alerts before trends peak", "Landing Page to capture inbound", "X Post Automation Backend"]
+    },
+    'creator-manual': {
+      title: "The Creator's Automation Stack",
+      message: "If you're spending time on anything that isn't creating, you're losing. This stack handles the backend — scheduling, follow-ups, lead capture — so your time goes to the content that actually grows your audience.",
+      items: ["Post Scheduling Automation", "Lead Capture and Follow-up Sequences", "Landing Page", "One dashboard to see everything"]
+    },
+    'creator-leads': {
+      title: "The Creator's Conversion Stack",
+      message: "You have audience but you're not converting it as well as you could. This builds the infrastructure to capture, follow up, and monetize — automatically, without you managing it.",
+      items: ["Landing Page with Lead Capture", "Automated Email Follow-up", "CRM Integration", "Analytics Dashboard"]
+    },
+    'creator-platform': {
+      title: "The Creator's Platform Build",
+      message: "You're ready to own your audience instead of renting it from an algorithm. This is a full platform — memberships, content, community — built on infrastructure you control.",
+      items: ["Full Web Application", "Auth and Membership System", "Content Dashboard", "AI-powered features"]
+    },
+    'coach-trends': {
+      title: "The Coach's Visibility Stack",
+      message: "Your expertise is real but you're not showing up where your ideal clients are looking. This gets your content in front of the right people at the right time — before your competitors.",
+      items: ["Niche Trend Detection", "Landing Page", "Content Automation Pipeline"]
+    },
+    'coach-manual': {
+      title: "The Coach's Operations Stack",
+      message: "You're doing intake, scheduling, invoicing, and follow-ups manually. This automates the entire client journey from first contact to delivered result — so you spend time coaching, not admin.",
+      items: ["Client Intake Automation", "CRM Integration", "Automated Follow-up Sequences", "Booking and Invoice Automation"]
+    },
+    'coach-leads': {
+      title: "The Coach's Client Pipeline",
+      message: "Leads are coming in but too many are falling through the cracks. This builds a system that catches every inquiry, qualifies automatically, and follows up until they book.",
+      items: ["Lead Capture Landing Page", "Automated Qualification Flow", "Follow-up Sequences", "CRM Pipeline Dashboard"]
+    },
+    'coach-platform': {
+      title: "The Coach's Platform Build",
+      message: "You want to scale beyond 1:1 work. This is the platform that lets you — memberships, courses, and AI-powered tools that deliver your methodology at scale.",
+      items: ["Full Web Platform", "Auth and Memberships", "AI-powered coaching tools", "Admin Dashboard"]
+    },
+    'sales-trends': {
+      title: "The Sales Intelligence Stack",
+      message: "Knowing what's moving in your prospect's world before they do is a competitive edge most reps never build. This stack surfaces those signals so you always have a reason to reach out.",
+      items: ["Industry Trend Monitoring", "Real-time Alerts to your phone", "Prospect Signal Scoring"]
+    },
+    'sales-manual': {
+      title: "The Sales Automation Stack",
+      message: "Every minute on CRM entry, follow-up reminders, and data transfer is a minute you're not selling. This handles all of it so you stay on what actually moves the number.",
+      items: ["CRM Automation Pipeline", "Follow-up Sequence Automation", "Lead Routing and Tagging", "Activity Tracking Dashboard"]
+    },
+    'sales-leads': {
+      title: "The Sales Pipeline Stack",
+      message: "The rep who follows up fastest wins. This builds a system that responds to every lead instantly, qualifies them automatically, and routes hot prospects directly to your calendar.",
+      items: ["Instant Lead Response Automation", "Qualification and Routing Flow", "Calendar Integration", "Pipeline Dashboard"]
+    },
+    'sales-platform': {
+      title: "The Sales Platform Build",
+      message: "You want to build something that scales your process — a tool, a system, something other reps or clients can use. Let's scope what that actually looks like.",
+      items: ["Custom Sales Platform", "AI-assisted Follow-up", "Team Dashboard", "Reporting and Analytics"]
+    },
+    'business-trends': {
+      title: "The Market Intelligence Stack",
+      message: "You need to know what's moving in your market before your competitors do. This monitors the signals that matter for your business and delivers them to you automatically.",
+      items: ["Custom Trend Monitoring", "Industry Signal Alerts", "Landing Page"]
+    },
+    'business-manual': {
+      title: "The Business Automation Stack",
+      message: "Manual workflows are costing you time and money every single day. This connects your tools, automates the repetitive work, and gives you one place to see what's actually happening in your business.",
+      items: ["Full Automation Pipeline", "CRM and Form Integration", "Error Handling and Retry Logic", "Operations Dashboard"]
+    },
+    'business-leads': {
+      title: "The Lead Machine Stack",
+      message: "Every lead that doesn't get followed up is revenue you left on the table. This builds the full system — capture, qualify, follow up, close — running automatically in the background.",
+      items: ["Lead Capture and Routing", "Automated Follow-up Sequences", "CRM Integration", "Conversion Dashboard"]
+    },
+    'business-platform': {
+      title: "The Business Platform Build",
+      message: "You need more than a website — you need a platform that runs part of your business. Full build: auth, backend, AI integration, and a dashboard that gives you real visibility.",
+      items: ["Full Stack Web Application", "Auth and Payments", "AI Integration", "Admin Dashboard"]
+    },
+    'startup-trends': {
+      title: "The Startup Signal Stack",
+      message: "Knowing what your market is responding to before you build saves you from building the wrong thing. This surfaces the signals that tell you where to focus.",
+      items: ["Market Trend Monitoring", "Engagement Signal Scoring", "Early Mover Alerts"]
+    },
+    'startup-manual': {
+      title: "The Startup Operations Stack",
+      message: "Manual processes at early stage are fine — until they're not. This automates the operations that will slow you down as you grow so you're never building against your own infrastructure.",
+      items: ["User Onboarding Automation", "CRM and Notification Pipelines", "Webhook and API Connections"]
+    },
+    'startup-leads': {
+      title: "The Startup Growth Stack",
+      message: "Early users are everything. This builds the system that captures every interested person, nurtures them automatically, and gets them activated — before you have the bandwidth to do it manually.",
+      items: ["Landing Page with Waitlist", "Email Capture and Automation", "Activation Sequence", "Analytics"]
+    },
+    'startup-platform': {
+      title: "The Full Startup Build",
+      message: "You have the idea. This is the full build — the foundation your product needs to actually run. Auth, database, AI, payments, and a dashboard to manage it all.",
+      items: ["Full Stack Application", "Auth and Database", "AI Integration", "Admin Dashboard", "Payment Integration"]
+    }
+  };
+
+  const labels = {
+    1: { creator: 'Content Creator', coach: 'Coach / Consultant', sales: 'Sales Professional', business: 'Small Business Owner', startup: 'Startup Founder' },
+    2: { trends: "Always late to trends", manual: 'Too much manual work', leads: 'Losing leads / no system', platform: 'Need to build something new' },
+    3: { nothing: 'Starting from scratch', manual_only: 'Business but all manual', some_tools: 'Tools that are disconnected', existing: 'Existing system to upgrade' }
+  };
+
+  function setProgress(step) {
+    [1,2,3].forEach(i => {
+      const dot = document.getElementById('dot-' + i);
+      dot.classList.remove('active', 'done');
+      if (i < step) dot.classList.add('done');
+      else if (i === step) dot.classList.add('active');
+    });
+  }
+
+  document.querySelectorAll('.config-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const step = parseInt(this.dataset.step);
+      const value = this.dataset.value;
+      sel[step] = value;
+
+      document.querySelectorAll(`[data-step="${step}"]`).forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+
+      setTimeout(() => {
+        document.getElementById('step-' + step).classList.remove('active');
+        if (step < 3) {
+          document.getElementById('step-' + (step + 1)).classList.add('active');
+          setProgress(step + 1);
+        } else {
+          showBlueprint();
+        }
+      }, 220);
+    });
+  });
+
+  function showBlueprint() {
+    const key = sel[1] + '-' + sel[2];
+    const bp = blueprints[key] || blueprints['business-manual'];
+
+    document.getElementById('blueprint-title').textContent = bp.title;
+    document.getElementById('blueprint-message').textContent = bp.message;
+    document.getElementById('blueprint-items').innerHTML = bp.items.map(i => `<div class="blueprint-item">${i}</div>`).join('');
+
+    const subject = encodeURIComponent('Discovery Call — ' + bp.title);
+    const body = encodeURIComponent(
+      'Hi Gio,\n\nI used the blueprint builder on your site and got: "' + bp.title + '"\n\n' +
+      'My situation:\n' +
+      '- I am a: ' + (labels[1][sel[1]] || '') + '\n' +
+      '- Biggest bottleneck: ' + (labels[2][sel[2]] || '') + '\n' +
+      '- Current setup: ' + (labels[3][sel[3]] || '') + '\n\n' +
+      'Would love to talk through the details.'
+    );
+    document.getElementById('blueprint-cta').href = 'mailto:giobenitez589@icloud.com?subject=' + subject + '&body=' + body;
+
+    setProgress(4);
+    document.getElementById('config-result').classList.add('active');
+  }
+
+  document.getElementById('blueprint-reset').addEventListener('click', function() {
+    [1,2,3].forEach(k => delete sel[k]);
+    document.querySelectorAll('.config-option').forEach(b => b.classList.remove('selected'));
+    document.getElementById('config-result').classList.remove('active');
+    document.getElementById('step-1').classList.add('active');
+    setProgress(1);
+  });
 </script>
 
 </body>
